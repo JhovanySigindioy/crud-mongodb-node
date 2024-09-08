@@ -2,7 +2,7 @@ import mongoose, { Model, Schema } from "mongoose";
 import { ITeacher } from "../interfaces";
 
 
-const schemaSubject: Schema = new Schema({
+const schemaTeacher: Schema = new Schema({
     name: {
         type: String,
         require: true,
@@ -15,6 +15,6 @@ const schemaSubject: Schema = new Schema({
     ]
 });
 
-const modelTeacher: Model<ITeacher> = mongoose.model<ITeacher>("Subject", schemaSubject);
+const modelTeacher: Model<ITeacher> = mongoose.model<ITeacher>("Teacher", schemaTeacher);
 
 export default modelTeacher;

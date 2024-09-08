@@ -9,7 +9,7 @@ export const serviceCreateTeacher = async (TeacherData: ITeacher): Promise<IServ
             error: null,
         }
     } catch (error: unknown) {
-        const errorMessage: string = error instanceof Error ? `Error al intentar crear la materia: ${error.message}` : `Error al intentar crear la materia`
+        const errorMessage: string = error instanceof Error ? `Error al intentar crear profesor: ${error.message}` : `Error al intentar crear profesor`
         return {
             data: null,
             error: errorMessage,
