@@ -1,9 +1,9 @@
 import { Request, Response } from "express"
-import { serviceUpdateStudent } from "../services"
+import { serviceUpdatePartialStudent } from "../../services/student";
 
-export const controllerUpdateStudent = async (req: Request, res: Response): Promise<void> => {
+export const controllerUpdatePartialStudent = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { data, error } = await serviceUpdateStudent(req.params.id, req.body);
+        const { data, error } = await serviceUpdatePartialStudent(req.params.id, req.body);
         if (error) {
             if (error.includes("no encontrado")) {
                 console.log(error);

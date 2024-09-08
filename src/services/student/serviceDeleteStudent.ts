@@ -1,9 +1,7 @@
+import { IServiceResponse, IStudent } from "../../interfaces";
+import modelStudent from "../../models/modelStudent";
 
-import { IServiceResponse } from "../intefaces/IServiceResponse";
-import modelStudent from "../models/modelStudent";
-import { IStudent } from "../intefaces/IStudent";
-
-export const serviceDeleteStudent = async (id: string): Promise<IServiceResponse> => {
+export const serviceDeleteStudent = async (id: string): Promise<IServiceResponse<IStudent>> => {
     try {
         const student: IStudent | null = await modelStudent.findByIdAndDelete(id);
 

@@ -1,8 +1,7 @@
-import { IServiceResponse } from "../intefaces/IServiceResponse";
-import { IStudent } from "../intefaces/IStudent";
-import modelStudent from "../models/modelStudent";
+import { IServiceResponse, IStudent } from "../../interfaces";
+import modelStudent from "../../models/modelStudent";
 
-export const serviceGetStudents = async (): Promise<IServiceResponse> => {
+export const serviceGetStudents = async (): Promise<IServiceResponse<IStudent[]>> => {
     try {
         const students: IStudent[] = await modelStudent.find().exec();
         return {

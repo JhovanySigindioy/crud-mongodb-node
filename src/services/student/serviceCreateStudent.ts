@@ -1,8 +1,7 @@
-import { IServiceResponse } from "../intefaces/IServiceResponse";
-import { IStudent } from "../intefaces/IStudent";
-import modelStudent from "../models/modelStudent";
+import { IServiceResponse, IStudent } from "../../interfaces";
+import modelStudent from "../../models/modelStudent";
 
-export const serviceCreateStudent = async (studentData: Partial<IStudent>): Promise<IServiceResponse> => {
+export const serviceCreateStudent = async (studentData: IStudent): Promise<IServiceResponse<IStudent>> => {
     try {
         const student = new modelStudent(studentData);
         const savedStudent = await student.save();

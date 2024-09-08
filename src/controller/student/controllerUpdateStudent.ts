@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
-import { serviceUpdateStudent } from "../services"
+import { serviceUpdateStudent } from "../../services/student";
 
-export const controllerUpdatePartialStudent = async (req: Request, res: Response): Promise<void> => {
+export const controllerUpdateStudent = async (req: Request, res: Response): Promise<void> => {
     try {
         const { data, error } = await serviceUpdateStudent(req.params.id, req.body);
         if (error) {

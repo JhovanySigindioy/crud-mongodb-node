@@ -1,11 +1,10 @@
 
-import { IServiceResponse } from "../intefaces/IServiceResponse";
-import { IStudent } from "../intefaces/IStudent";
-import modelStudent from "../models/modelStudent";
+import { IServiceResponse, IStudent } from "../../interfaces";
+import modelStudent from "../../models/modelStudent";
 
-export const serviceUpdateStudent = async (id: string, updateData: Partial<IStudent>): Promise<IServiceResponse> => {
+export const serviceUpdatePartialStudent = async (id: string, updateData: Partial<IStudent>): Promise<IServiceResponse<IStudent>> => {
     try {
-        const student: IStudent | null = await modelStudent.findByIdAndUpdate(id, updateData, { new: true });
+        const student: IStudent | null = await modelStudent.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
         if (!student) {
             return {
                 data: null,

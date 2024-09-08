@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { controllerCreateStudent, controllerDeleteStudent, controllerGetStudents, controllerUpdateStudent, controllerUpdatePartialStudent } from "../controller";
+import { controllerCreateStudent, controllerDeleteStudent, controllerGetStudents, controllerUpdateStudent, controllerUpdatePartialStudent } from "../controller/student";
 
-export const appRouter = Router();
+export const routesStudent = Router();
 
-appRouter
+routesStudent
     .post("/students", controllerCreateStudent)
     .get("/students", controllerGetStudents)
     .put("/students/:id", controllerUpdateStudent)

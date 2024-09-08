@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { serviceGetStudents } from '../services';
+import { serviceGetStudents } from '../../services/student';
+
 
 export const controllerGetStudents = async (req: Request, res: Response): Promise<void> => {
     try {

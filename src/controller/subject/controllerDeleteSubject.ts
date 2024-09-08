@@ -1,16 +1,16 @@
 
 import { Request, Response } from "express";
-import { serviceDeleteStudent } from "../services"
+import { serviceDeleteSubject } from "../../services/subject";
 
-export const controllerDeleteStudent = async (req: Request, res: Response): Promise<void> => {
+export const controllerDeleteSubject = async (req: Request, res: Response): Promise<void> => {
     try {
-        const { data, error } = await serviceDeleteStudent(req.params.id);
+        const { data, error } = await serviceDeleteSubject(req.params.id);
         //código de estado adecuado para manejo de errores
         if (error) {
             console.error(error);
             if (error.includes("no encontrado")) {
                 res.status(404).json({
-                    message: "Estudiante no encontrado",
+                    message: "Materia no encontrado",
                     error,
                 });
             } else {
@@ -21,15 +21,15 @@ export const controllerDeleteStudent = async (req: Request, res: Response): Prom
             }
             return;
         }
-        //estudiante fue eliminado correctamente
+        //Materia fue eliminado correctamente
         res.status(204).json({
-            message: "Estudiante borrado con éxito",
+            message: "Materia borrado con éxito",
             data,
         });
     } catch (error) {
-        console.error(`Error inesperado al intentar borrar estudiante: ${error}`);
+        console.error(`Error inesperado al intentar borrar Materia: ${error}`);
         res.status(500).json({
-            message: "Error inesperado al intentar borrar estudiante",
+            message: "Error inesperado al intentar borrar Materia",
             error,
         });
     }
