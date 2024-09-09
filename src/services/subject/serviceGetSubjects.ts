@@ -2,11 +2,17 @@
 import { IServiceResponse, ISubject } from "../../interfaces";
 import modelSubject from "../../models/modelSubject";
 
-
-
 export const serviceGetSubjects = async (): Promise<IServiceResponse<ISubject[]>> => {
     try {
-        const subjects: ISubject[] = await modelSubject.find().populate("students").exec();
+        const subjects: ISubject[] = await modelSubject
+            .find()
+            .populate({
+                path: "teachers.teacherId", // Para popular los profesores dentro del array de `teachers`
+            })
+            .populate({
+                path: "teachers.students", // Para popular los estudiantes dentro del array de `students`
+            })
+            .exec();
         return {
             data: subjects,
             error: null,

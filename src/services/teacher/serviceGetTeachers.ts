@@ -6,7 +6,7 @@ import modelTeacher from "../../models/modelTeacher";
 
 export const serviceGetTeachers = async (): Promise<IServiceResponse<ITeacher[]>> => {
     try {
-        const Teachers: ITeacher[] = await modelTeacher.find().populate("students").exec();
+        const Teachers: ITeacher[] = await modelTeacher.find().populate("subjects").exec();
         return {
             data: Teachers,
             error: null,

@@ -3,7 +3,7 @@ import modelStudent from "../../models/modelStudent";
 
 export const serviceGetStudents = async (): Promise<IServiceResponse<IStudent[]>> => {
     try {
-        const students: IStudent[] = await modelStudent.find().exec();
+        const students: IStudent[] = await modelStudent.find().populate("subjects").exec();
         return {
             data: students,
             error: null

@@ -12,6 +12,12 @@ const schemaStudent: Schema = new Schema({
         default: false,
     },
     age: Number,
+    subjects: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Subject"
+        }
+    ]
 });
 
 const modelStudent: Model<IStudent> = mongoose.model<IStudent>("Student", schemaStudent);

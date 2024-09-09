@@ -1,16 +1,15 @@
 import mongoose, { Model, Schema } from "mongoose";
 import { ITeacher } from "../interfaces";
 
-
 const schemaTeacher: Schema = new Schema({
     name: {
         type: String,
-        require: true,
+        required: true,
     },
-    students: [
+    subjects: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Student"
+            ref: "Subject"
         }
     ]
 });

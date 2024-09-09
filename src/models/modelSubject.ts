@@ -5,12 +5,20 @@ import { ISubject } from "../interfaces";
 const schemaSubject: Schema = new Schema({
     name: {
         type: String,
-        require: true,
+        required: true,
     },
-    students: [
+    teachers: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Student"
+            teacherId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Teacher",
+            },
+            students: [
+                {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "Student",
+                }
+            ]
         }
     ]
 });
